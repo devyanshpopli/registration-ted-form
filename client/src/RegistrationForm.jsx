@@ -88,7 +88,7 @@ function RegistrationForm() {
 
   return (
     <div className="registration-form-container">
-      <h1>Registration Form</h1>
+      <h1 id="rf" >Registration Form</h1>
       <form onSubmit={handleSubmit} className="registration-form">
         <div className="form-group">
           <label htmlFor="name">Name:</label>
