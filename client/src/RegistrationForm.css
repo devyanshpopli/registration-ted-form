@@ -32,19 +32,22 @@
   input[type="text"],
   input[type="email"] {
     padding: 5px;
-    border-radius: 50px;
+    border-radius: 10px;
     border: 1px solid #ccc;
     margin-bottom: 5px;
   }
   
   button[type="submit"] {
     padding: 5px;
-    border-radius: 50px;
-    background-color: #0077cc;
+    border-radius: 10px;
+    background-color: red;
     color: #fff;
     border: none;
     cursor: pointer;
     font-size: 16px;
+  }
+  #rf{
+    color: red;
   }
   
   button[type="submit"]:hover {
@@ -55,4 +58,9 @@
     color: red;
     margin-top: 10px;
   }
-  
+body{
+  background-image: url('Images/4.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
