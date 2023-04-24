@@ -16,11 +16,11 @@ app.use(cors());
 app.use(express.json());
 
 app.post('/register', async (req, res) => {
-  const { name, email, branch, section, rollnumber, phoneNumber, libraryid } = req.body;
+  const { name, email, branch, section, rollnumber, phoneNumber } = req.body;
 
   try {
     const result = await pool.query(
-      'INSERT INTO users (name, email, branch, section, rollnumber, phonenumber,libraryid) VALUES ($1, $2, $3, $4, $5, $6)',
+      'INSERT INTO users (name, email, branch, section, rollnumber, phonenumber) VALUES ($1, $2, $3, $4, $5, $6)',
       [name, email, branch, section, rollnumber, phoneNumber]
     );
 

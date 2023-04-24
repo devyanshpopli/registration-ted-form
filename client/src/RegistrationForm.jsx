@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import GooglePayButton from '@google-pay/button-react';
+import { Axios } from 'axios';
 import './RegistrationForm.css';
+// import {fill} from "@cloudinary/url-gen/actions/resize";
+// import {CloudinaryImage} from '@cloudinary/url-gen';
+
 
 function RegistrationForm() {
   const [name, setName] = useState('');
@@ -11,6 +14,7 @@ function RegistrationForm() {
   const [rollnumber, setRollnumber] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [image,setImage] = useState('');
 
   function validateFormData(formData) {
     const { name, email, branch, section, rollnumber, phoneNumber } = formData;
@@ -45,6 +49,22 @@ function RegistrationForm() {
 
     return null;
   }
+
+  //image upload cloudinary
+
+  const uploadImage=() =>{
+    const formData = new FormData();
+    formData.append("file",image)
+    formData.append("upload_preset","tedxkiet")
+
+    axios.post(
+      "https://api.cloudinary.com/v1_1/drjp31htt/image/upload",
+      formData
+      ).then((response)=>{
+      console.log(response);
+    });
+  };
+
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -106,6 +126,15 @@ function RegistrationForm() {
             onChange={(event) => setPhoneNumber(event.target.value)}
           />
         </div>
+        <div className="form-group">
+          <label htmlFor="phoneNumber">Payment Screenshot:</label>
+          <input
+            type="file"
+            onChange={(event) => setImage(event.target.files[0])}
+          />
+          <button onClick={uploadImage}>Upload Image</button>
+        </div>
+    
         <div className="form-group">
           <button type="submit">Register</button>
         </div>
