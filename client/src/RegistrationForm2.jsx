@@ -83,23 +83,21 @@ function RegistrationForm2() {
   return (
     
     <div className="registration-form-container">
-      <h1 id="rf">Payment Gateway</h1>
+      <center> <h1 id="rf">Payment Gateway</h1></center>
       <form onSubmit={handleSubmit} className="registration-form">
         <div id="payimage">
-        <img src={img2} width="400px" height="400px"/>
+        <center> <img src={img2} width="350px" height="350px"/> </center>
         </div>
-        <p> PHONE NO. -  +91 99976 46831</p>
+       <center>  <p> PHONE NO. -  +91 99976 46831</p> </center>
        
+        
         <div className="form-group">
-          <button type="submit">Upload SS and Register</button>
-        </div>
-        <div className="form-group">
-          <label htmlFor="phoneNumber">Payment Screenshot:</label>
-          <input
+          <center> <label htmlFor="phoneNumber">Submit Payment Screenshot:</label> </center>
+          <center><input
             type="file"
             onChange={(event) => setImage(event.target.files[0])}
-          />
-          <button onClick={uploadImage}>Upload Image</button>
+          /> </center>
+          <button type="submit" onClick={uploadImage}>Upload Image</button>
         </div>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
       </form>
@@ -108,3 +106,4 @@ function RegistrationForm2() {
 }
 
 export default RegistrationForm2;
+
