@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './RegistrationForm2.css';
 import img2 from './Images/Payment.jpeg';
+import { Navigate } from 'react-router-dom';
 
 function RegistrationForm2() {
   const [name, setName] = useState('');
@@ -79,6 +80,7 @@ function RegistrationForm2() {
       ).then((response)=>{
         alert('Image uploaded successfully'); 
       console.log(response);
+      
     });
   };
 
@@ -108,4 +110,6 @@ function RegistrationForm2() {
 }
 
 export default RegistrationForm2;
+
+
 
