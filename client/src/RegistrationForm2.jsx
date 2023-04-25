@@ -90,6 +90,7 @@ function RegistrationForm2() {
   return (
     <div className="registration-form-container">
       <center> <h1 id="rf">Payment Gateway</h1></center>
+      <center> <h1 id="rf">Registration Fee is Rs 350</h1></center>
       <form className="registration-form">
         <div id="payimage">
         <center> <img src={img2} width="350px" height="350px"/> </center>
