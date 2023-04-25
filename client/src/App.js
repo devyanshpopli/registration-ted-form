@@ -1,13 +1,14 @@
+import { Route, Routes } from "react-router-dom";
 import RegistrationForm from "./RegistrationForm";
+import RegistrationForm2 from "./RegistrationForm2";
 
 function App() {
   return (
     <>
-    <div className='container mt-4'>
-      <center>
-      <RegistrationForm/>
-      </center>
-      </div>
+      <Routes>
+        <Route path="/" element={<RegistrationForm/>}/>
+        <Route path="/RegistrationForm2" element={<RegistrationForm2/>}/>
+      </Routes>
     </>
   );
 }

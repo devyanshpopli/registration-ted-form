@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Axios } from 'axios';
+import {Link} from 'react-router-dom';
+// import { Axios } from 'axios';
 import './RegistrationForm.css';
+import RegistrationForm2 from './RegistrationForm2';
+
 // import {fill} from "@cloudinary/url-gen/actions/resize";
 // import {CloudinaryImage} from '@cloudinary/url-gen';
 
@@ -14,17 +17,18 @@ function RegistrationForm() {
   const [rollnumber, setRollnumber] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [image,setImage] = useState('');
 
   function validateFormData(formData) {
     const { name, email, branch, section, rollnumber, phoneNumber } = formData;
 
-    if (!name || !email || !branch || !section || !rollnumber || !phoneNumber) {
-      return 'All fields are required.';
+    if (name && email && branch && section && rollnumber && phoneNumber) {
+      <Link to="/RegistrationForm2">{<RegistrationForm2/>}</Link>
+    }else{
+      return 'Please fill out all required fields.';
     }
 
     if (name.length < 2 || name.length > 50) {
-      return 'Name must be between 2 and 50 characters long.';
+      return 'Invalid Name';
     }
 
     if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
@@ -50,21 +54,10 @@ function RegistrationForm() {
     return null;
   }
 
-  //image upload cloudinary
+      //image upload cloudinary
 
-  const uploadImage=() =>{
-    const formData = new FormData();
-    formData.append("file",image)
-    formData.append("upload_preset","tedxkiet")
-
-    axios.post(
-      "https://api.cloudinary.com/v1_1/drjp31htt/image/upload",
-      formData
-      ).then((response)=>{
-      console.log(response);
-    });
-  };
-
+    
+  
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -87,6 +80,8 @@ function RegistrationForm() {
   }
 
   return (
+    
+    <>
     <div className="registration-form-container">
       <h1 id="rf" >Registration Form</h1>
       <form onSubmit={handleSubmit} className="registration-form">
@@ -126,21 +121,19 @@ function RegistrationForm() {
             onChange={(event) => setPhoneNumber(event.target.value)}
           />
         </div>
+     
+      
         <div className="form-group">
-          <label htmlFor="phoneNumber">Payment Screenshot:</label>
-          <input
-            type="file"
-            onChange={(event) => setImage(event.target.files[0])}
-          />
-          <button onClick={uploadImage}>Upload Image</button>
+              <Link to="/RegistrationForm2">
+            <button type="submit">Pay</button>
+            </Link>     
         </div>
-    
-        <div className="form-group">
-          <button type="submit">Register</button>
-        </div>
+        
         {errorMessage && <p className="error-message">{errorMessage}</p>}
       </form>
     </div>
+</>
+    
   );
 }
 

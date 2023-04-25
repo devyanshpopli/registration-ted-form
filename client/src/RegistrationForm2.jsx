@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import GooglePayButton from '@google-pay/button-react';
 import './RegistrationForm2.css';
-import img2 from './Images/payment.png';
+import img2 from './Images/Payment.jpeg';
 
 function RegistrationForm2() {
   const [name, setName] = useState('');
@@ -12,6 +11,7 @@ function RegistrationForm2() {
   const [rollnumber, setRollnumber] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [image,setImage] = useState('');
 
   function validateFormData(formData) {
     const { name, email, branch, section, rollnumber, phoneNumber } = formData;
@@ -66,8 +66,22 @@ function RegistrationForm2() {
       setErrorMessage('An error occurred while processing your request.');
     }
   }
+  //image upload cloudinary
+  const uploadImage=() =>{
+    const formData = new FormData();
+    formData.append("file",image)
+    formData.append("upload_preset","tedxkiet")
+
+    axios.post(
+      "https://api.cloudinary.com/v1_1/drjp31htt/image/upload",
+      formData
+      ).then((response)=>{
+      console.log(response);
+    });
+  };
 
   return (
+    
     <div className="registration-form-container">
       <h1 id="rf">Payment Gateway</h1>
       <form onSubmit={handleSubmit} className="registration-form">
@@ -77,7 +91,15 @@ function RegistrationForm2() {
         <p> PHONE NO. -  +91 99976 46831</p>
        
         <div className="form-group">
-          <button type="submit">Pay</button>
+          <button type="submit">Upload SS and Register</button>
+        </div>
+        <div className="form-group">
+          <label htmlFor="phoneNumber">Payment Screenshot:</label>
+          <input
+            type="file"
+            onChange={(event) => setImage(event.target.files[0])}
+          />
+          <button onClick={uploadImage}>Upload Image</button>
         </div>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
       </form>
