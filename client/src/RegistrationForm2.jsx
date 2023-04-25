@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './RegistrationForm2.css';
 import img2 from './Images/Payment.jpeg';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import RegistrationForm3 from './RegistrationForm3';
 
 function RegistrationForm2() {
   const [name, setName] = useState('');
@@ -13,7 +14,7 @@ function RegistrationForm2() {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [image,setImage] = useState('');
-
+  const navigate = useNavigate();
   function validateFormData(formData) {
     const { name, email, branch, section, rollnumber, phoneNumber } = formData;
 
@@ -48,16 +49,16 @@ function RegistrationForm2() {
     return null;
   }
 
-  async function handleSubmit(event) {
-    event.preventDefault();
+  // async function handleSubmit(event) {
+  //   event.preventDefault();
 
-    const formData = { name, email, branch, section, rollnumber, phoneNumber };
-    const errorMessage = validateFormData(formData);
+  //   const formData = { name, email, branch, section, rollnumber, phoneNumber };
+  //   const errorMessage = validateFormData(formData);
 
-    if (errorMessage) {
-      setErrorMessage(errorMessage);
-      return;
-    }
+  //   if (errorMessage) {
+  //     setErrorMessage(errorMessage);
+  //     return;
+  //   }
 
     // try {
     //   await axios.post('http://localhost:5000/register', formData);
@@ -66,7 +67,8 @@ function RegistrationForm2() {
     //   console.error(err);
     //   setErrorMessage('An error occurred while processing your request.');
     // }
-  }
+  // }
+
   //image upload cloudinary
   const uploadImage=(event) =>{
     event.preventDefault();
@@ -79,13 +81,13 @@ function RegistrationForm2() {
       formData
       ).then((response)=>{
         alert('Image uploaded successfully'); 
+        navigate(`/RegistrationForm3`);
       console.log(response);
       
     });
   };
 
   return (
-    
     <div className="registration-form-container">
       <center> <h1 id="rf">Payment Gateway</h1></center>
       <form className="registration-form">

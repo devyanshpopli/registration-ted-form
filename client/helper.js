@@ -1,0 +1,1 @@
+export const url = "https://ted-myd4.onrender.com";
