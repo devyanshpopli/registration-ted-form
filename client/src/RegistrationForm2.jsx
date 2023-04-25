@@ -50,24 +50,25 @@ function RegistrationForm2() {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    // const formData = { name, email, branch, section, rollnumber, phoneNumber };
-    // const errorMessage = validateFormData(formData);
+    const formData = { name, email, branch, section, rollnumber, phoneNumber };
+    const errorMessage = validateFormData(formData);
 
     if (errorMessage) {
       setErrorMessage(errorMessage);
       return;
     }
 
-    try {
-      await axios.post('http://localhost:5000/register');
-      alert('User registered successfully.');
-    } catch (err) {
-      console.error(err);
-      setErrorMessage('An error occurred while processing your request.');
-    }
+    // try {
+    //   await axios.post('http://localhost:5000/register', formData);
+    //   alert('User registered successfully.');
+    // } catch (err) {
+    //   console.error(err);
+    //   setErrorMessage('An error occurred while processing your request.');
+    // }
   }
   //image upload cloudinary
-  const uploadImage=() =>{
+  const uploadImage=(event) =>{
+    event.preventDefault();
     const formData = new FormData();
     formData.append("file",image)
     formData.append("upload_preset","tedxkiet")
@@ -76,6 +77,7 @@ function RegistrationForm2() {
       "https://api.cloudinary.com/v1_1/drjp31htt/image/upload",
       formData
       ).then((response)=>{
+        alert('Image uploaded successfully'); 
       console.log(response);
     });
   };

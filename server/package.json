@@ -10,7 +10,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "serve": "nodemon index.js"
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
