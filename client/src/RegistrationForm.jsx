@@ -83,7 +83,7 @@ function RegistrationForm() {
     
     <>
     <div className="registration-form-container">
-      <h1 id="rf" >Registration Form</h1>
+      <center> <h1 id="rf" >Registration Form</h1> </center>
       <form onSubmit={handleSubmit} className="registration-form">
         <div className="form-group">
           <label htmlFor="name">Name:</label>
@@ -125,7 +125,7 @@ function RegistrationForm() {
       
         <div className="form-group">
               <Link to="/RegistrationForm2">
-            <button type="submit">Pay</button>
+            <center> <button type="submit">Pay </button> </center>
             </Link>     
         </div>
         
@@ -138,3 +138,4 @@ function RegistrationForm() {
 }
 
 export default RegistrationForm;
+
