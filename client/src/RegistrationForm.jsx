@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 // import { Axios } from 'axios';
 import './RegistrationForm.css';
 import RegistrationForm2 from './RegistrationForm2';
@@ -17,12 +17,12 @@ function RegistrationForm() {
   const [rollnumber, setRollnumber] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-
+    const navigate = useNavigate();
   function validateFormData(formData) {
     const { name, email, branch, section, rollnumber, phoneNumber } = formData;
 
     if (name && email && branch && section && rollnumber && phoneNumber) {
-      <Link to="/RegistrationForm2">{<RegistrationForm2/>}</Link>
+       navigate(`/RegistrationForm2`);
     }else{
       return 'Please fill out all required fields.';
     }
@@ -124,9 +124,7 @@ function RegistrationForm() {
      
       
         <div className="form-group">
-              <Link to="/RegistrationForm2">
-            <center> <button type="submit">Pay </button> </center>
-            </Link>     
+            <center> <button type="submit">Register </button> </center>
         </div>
         
         {errorMessage && <p className="error-message">{errorMessage}</p>}

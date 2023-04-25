@@ -50,8 +50,8 @@ function RegistrationForm2() {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    const formData = { name, email, branch, section, rollnumber, phoneNumber };
-    const errorMessage = validateFormData(formData);
+    // const formData = { name, email, branch, section, rollnumber, phoneNumber };
+    // const errorMessage = validateFormData(formData);
 
     if (errorMessage) {
       setErrorMessage(errorMessage);
@@ -59,7 +59,7 @@ function RegistrationForm2() {
     }
 
     try {
-      await axios.post('http://localhost:5000/register', formData);
+      await axios.post('http://localhost:5000/register');
       alert('User registered successfully.');
     } catch (err) {
       console.error(err);
@@ -84,7 +84,7 @@ function RegistrationForm2() {
     
     <div className="registration-form-container">
       <center> <h1 id="rf">Payment Gateway</h1></center>
-      <form onSubmit={handleSubmit} className="registration-form">
+      <form className="registration-form">
         <div id="payimage">
         <center> <img src={img2} width="350px" height="350px"/> </center>
         </div>
