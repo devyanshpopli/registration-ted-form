@@ -54,9 +54,7 @@ function RegistrationForm() {
     return null;
   }
 
-      //image upload cloudinary
 
-    
   
 
   async function handleSubmit(event) {
