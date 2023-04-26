@@ -17,7 +17,7 @@ app.use(express.json());
 
 app.post('/register', async (req, res) => {
   const { name, email, branch, section, rollnumber, phoneNumber } = req.body;
-
+  console.log("Post called successfully.");
   try {
     const result = await pool.query(
       'INSERT INTO users (name, email, branch, section, rollnumber, phonenumber) VALUES ($1, $2, $3, $4, $5, $6)',
@@ -27,6 +27,7 @@ app.post('/register', async (req, res) => {
     res.status(201).json({ message: 'User registered successfully.' });
   } catch (err) {
     console.error(err);
+    console.log(err);
     res.status(500).json({ message: 'An error occurred while processing your request.' });
   }
 });

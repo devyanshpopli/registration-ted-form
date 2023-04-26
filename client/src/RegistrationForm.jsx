@@ -71,7 +71,7 @@ function RegistrationForm() {
     }
 
     try {
-      await axios.post('http://localhost:5000/register', formData);
+      await axios.post('http://registration-ted-form-registration-ted-form.up.railway.app/register', formData);
       alert('User registered successfully.');
     } catch (err) {
       console.error(err);
