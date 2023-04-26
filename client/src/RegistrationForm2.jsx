@@ -80,8 +80,12 @@ function RegistrationForm2() {
       "https://api.cloudinary.com/v1_1/drjp31htt/image/upload",
       formData
       ).then((response)=>{
-        alert('Image uploaded successfully'); 
-        navigate(`/RegistrationForm3`);
+        if(!image) {
+          alert('Please upload the image');
+        } else{
+              alert('Image uploaded successfully'); 
+        }
+              navigate(`/RegistrationForm3`);
       console.log(response);
       
     });
